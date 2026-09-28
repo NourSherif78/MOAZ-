@@ -1,6 +1,0 @@
-services:
-  - type: web
-    name: prime-study-abroad-portal
-    env: static
-    buildCommand: ""
-    staticPublishPath: ./
