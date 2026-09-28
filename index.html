@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#26584D">
+  <title>PRIME | بوابة القبولات الدولية والمنح الجامعية — الوكيل الرسمي في قطر: معاذ عناني</title>
+  
+  <!-- Fonts: Cairo & Tajawal for 100% pure Arabic typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+
+  <style>
+    :root {
+      --color-primary: #26584D;
+      --color-primary-hover: #1C443C;
+      --color-primary-light: #EBF2F0;
+      --color-bg-canvas: #F6F3EB;
+      --color-bg-card: #FFFFFF;
+      --color-border: #E3DED2;
+      --color-text-title: #15221F;
+      --color-text-body: #4E5F5A;
+      --color-text-muted: #7E8D88;
+    }
+    
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: var(--color-bg-canvas);
+      color: var(--color-text-body);
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .font-cairo {
+      font-family: 'Cairo', sans-serif;
+    }
+
+    /* Reference Style: Warm Glass Navbar */
+    .glass-nav {
+      background: rgba(246, 243, 235, 0.94);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--color-border);
+    }
+
+    /* Reference Style: Crisp White Elevated Cards with Soft Shadow */
+    .theme-card {
+      background: #FFFFFF;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 10px 30px -8px rgba(38, 88, 77, 0.08);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .theme-card:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -10px rgba(38, 88, 77, 0.16);
+    }
+
+    /* Liquid Glass styling on Hero Scenery */
+    .liquid-glass {
+      background: rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.3), inset 0 1px 1px 0 rgba(255, 255, 255, 0.6);
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+      color: #FFFFFF;
+    }
+
+    /* Hero Background Layer Crossfade */
+    .hero-bg-layer {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transform: scale(1.03);
+      transition: opacity 0.8s ease-in-out, transform 1.4s ease-out;
+      pointer-events: none;
+    }
+    
+    .hero-bg-layer.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Glows */
+    .glow-dot {
+      box-shadow: 0 0 10px #26584D;
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F6F3EB;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D5CEBF;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #26584D;
+    }
+
+    /* Ambient Canvas */
+    #ambientCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 15;
+    }
+
+    /* 4-Landmarks Card styling */
+    .landmark-card {
+      transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .landmark-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 45px -12px rgba(38, 88, 77, 0.28);
+    }
+  </style>
+</head>
+<body class="bg-[#F6F3EB] text-[#4E5F5A] antialiased selection:bg-[#26584D] selection:text-white">
+
+  <!-- Ambient Particle Canvas (Snow, Lanterns, Confetti, Stars) -->
+  <canvas id="ambientCanvas"></canvas>
+
+  <!-- ================= TOP OFFICIAL ACCREDITATION RIBBON (Mobile Optimized) ================= -->
+  <aside aria-label="شريط الاعتماد الرسمي" class="fixed top-0 inset-x-0 z-50 bg-[#26584D] text-white py-1 px-3 text-center text-[10px] sm:text-xs font-bold font-cairo flex items-center justify-center gap-1.5 shadow-sm truncate">
+    <span>🇶🇦</span>
+    <span class="truncate">معاذ عناني — الوكيل الرسمي المعتمد لشركة برايم (PRIME) الدولية في دولة قطر</span>
+    <span class="hidden md:inline text-white/80">| قبولات فورية ومجانية 100%</span>
+  </aside>
+
+  <!-- ================= TOP NAVIGATION BAR (Mobile Optimized) ================= -->
+  <header class="fixed top-[25px] sm:top-[28px] inset-x-0 z-40 glass-nav h-16 sm:h-[72px] flex items-center transition-all duration-300">
+    <div class="max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4">
+      
+      <!-- Brand Logo & Official Agent Title -->
+      <a href="#hero" class="flex items-center gap-2 sm:gap-3 group shrink-0">
+        <div class="relative w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl overflow-hidden border border-[#E3DED2] bg-white flex items-center justify-center shadow-sm">
+          <img src="assets/prime_logo.jpg" alt="شعار برايم" class="w-full h-full object-cover">
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1.5 sm:gap-2">
+            <span class="text-base sm:text-xl font-extrabold tracking-wider text-[#15221F] font-cairo group-hover:text-[#26584D] transition-colors">برايم | PRIME</span>
+            <span class="w-2 h-2 rounded-full bg-[#26584D] glow-dot animate-pulse"></span>
+          </div>
+          <span class="text-[10px] sm:text-[11px] text-[#4E5F5A] font-medium flex items-center gap-1">
+            <span class="truncate max-w-[140px] sm:max-w-none">الوكيل الرسمي بقطر: معاذ عناني</span>
+            <span class="text-[#26584D] font-bold">🇶🇦 🎖️</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Quick Country Switcher in Top Bar (Desktop) -->
+      <nav aria-label="اختيار الوجهة الدراسية" class="hidden lg:flex items-center gap-1.5 p-1 rounded-full bg-white border border-[#E3DED2] text-xs font-bold font-cairo shadow-sm">
+        <button onclick="switchCountrySlide('turkey')" id="navCountry_turkey" class="nav-country-btn px-3.5 py-1.5 rounded-full transition-all bg-[#26584D] text-white shadow-sm">🇹🇷 تركيا</button>
+        <button onclick="switchCountrySlide('russia')" id="navCountry_russia" class="nav-country-btn px-3.5 py-1.5 rounded-full transition-all text-[#4E5F5A] hover:text-[#15221F] hover:bg-[#F6F3EB]">🇷🇺 روسيا</button>
+        <button onclick="switchCountrySlide('malaysia')" id="navCountry_malaysia" class="nav-country-btn px-3.5 py-1.5 rounded-full transition-all text-[#4E5F5A] hover:text-[#15221F] hover:bg-[#F6F3EB]">🇲🇾 ماليزيا</button>
+        <button onclick="switchCountrySlide('china')" id="navCountry_china" class="nav-country-btn px-3.5 py-1.5 rounded-full transition-all text-[#4E5F5A] hover:text-[#15221F] hover:bg-[#F6F3EB]">🇨🇳 الصين</button>
+        <button onclick="switchCountrySlide('cyprus')" id="navCountry_cyprus" class="nav-country-btn px-3.5 py-1.5 rounded-full transition-all text-[#4E5F5A] hover:text-[#15221F] hover:bg-[#F6F3EB]">🇨🇾 قبرص</button>
+      </nav>
+
+      <!-- Right Utility Bar: Currency Switcher & Direct WhatsApp -->
+      <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+        
+        <!-- Currency Switcher -->
+        <div class="flex items-center bg-white p-0.5 sm:p-1 rounded-full border border-[#E3DED2] text-[11px] sm:text-xs font-bold shadow-sm">
+          <button onclick="setCurrency('USD')" id="currUSD" class="px-2 sm:px-3 py-1 rounded-full transition-all bg-[#26584D] text-white shadow-sm font-bold">$</button>
+          <button onclick="setCurrency('TRY')" id="currTRY" class="px-2 sm:px-3 py-1 rounded-full transition-all text-[#4E5F5A] hover:text-[#15221F] font-bold">₺</button>
+          <button onclick="setCurrency('RUB')" id="currRUB" class="px-2 sm:px-3 py-1 rounded-full transition-all text-[#4E5F5A] hover:text-[#15221F] font-bold">₽</button>
+        </div>
+
+        <!-- Ambient FX Toggle Button -->
+        <button onclick="toggleAmbient()" id="ambientBtn" title="تفعيل أو إيقاف التأثيرات الحركية" class="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#E3DED2] bg-white text-xs text-[#26584D] hover:bg-[#EBF2F0] transition-all font-bold shadow-sm">
+          <span>✦</span>
+          <span id="ambientStatus">تأثيرات</span>
+        </button>
+
+        <!-- Direct WhatsApp CTA Button (Compact on mobile) -->
+        <a href="https://wa.me/905367857843?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%B3%D8%AA%D8%A7%D8%B0%20%D9%85%D8%B9%D8%A7%D8%B0%20%D8%B9%D9%86%D8%A7%D9%86%D9%8A%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D9%82%D8%A8%D9%88%D9%84%20%D9%88%D8%A7%D9%84%D9%85%D9%86%D8%AD%20%D8%A7%D9%84%D8%AC%D8%A7%D9%85%D8%B9%D9%8A%D8%A9%20%D8%A8%D8%B5%D9%81%D8%AA%D9%83%20%D8%A7%D9%84%D9%88%D9%83%D9%8A%D9%84%20%D8%A7%D9%84%D8%B1%D8%B3%D9%85%D9%8A%20%D9%84%D8%B4%D8%B1%D9%83%D8%A9%20%D8%A8%D8%B1%D8%A7%D9%8A%D9%85%20%D9%81%D9%8A%20%D9%82%D8%B7%D8%B1" target="_blank" class="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#26584D] hover:bg-[#1C443C] text-white font-bold text-xs transition-all shadow-md shadow-[#26584D]/25 active:scale-95">
+          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.303-.058.116-.087.188-.173.289l-.26.303c-.087.087-.177.182-.076.355.101.173.449.741.963 1.2.662.591 1.221.774 1.394.861.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+          <span class="hidden sm:inline">تواصل مع الوكيل</span>
+          <span class="sm:hidden text-[11px]">واتساب</span>
+        </a>
+
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION (Mobile Responsive & 8K Panoramic Reference Styling) ================= -->
+  <section id="hero" class="relative pt-24 sm:pt-28 pb-8 sm:pb-12 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    
+    <!-- The Magnificent Rounded Hero Card -->
+    <div class="relative min-h-[520px] sm:min-h-[640px] rounded-2xl sm:rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col justify-between p-4 sm:p-12 border border-[#E3DED2]">
+      
+      <!-- Hero Background Layers (one for each country with embedded architectural typography) -->
+      <div id="heroBg0" class="hero-bg-layer active" style="background-image: url('assets/hero_turkey.jpg');"></div>
+      <div id="heroBg1" class="hero-bg-layer" style="background-image: url('assets/hero_russia.jpg');"></div>
+      <div id="heroBg2" class="hero-bg-layer" style="background-image: url('assets/hero_malaysia.jpg');"></div>
+      <div id="heroBg3" class="hero-bg-layer" style="background-image: url('assets/hero_china.jpg');"></div>
+      <div id="heroBg4" class="hero-bg-layer" style="background-image: url('assets/hero_cyprus.jpg');"></div>
+
+      <!-- Scenery Dark Gradient Overlay for Crisp White Text Legibility -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/25 pointer-events-none"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent pointer-events-none"></div>
+
+      <!-- Top Row inside Hero Card: Official Credential Badge & Liquid Glass Tag -->
+      <div class="relative z-20 flex flex-wrap items-center justify-between gap-2.5 sm:gap-4">
+        
+        <!-- Official Accreditation Hero Badge -->
+        <div class="inline-flex items-center gap-2 sm:gap-3 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-white/40 max-w-full">
+          <span class="text-base sm:text-xl shrink-0">🇶🇦</span>
+          <div class="text-right truncate">
+            <span class="text-[11px] sm:text-sm font-extrabold text-[#15221F] font-cairo truncate">معاذ عناني • الوكيل الرسمي لشركة برايم بقطر</span>
+            <span class="px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-[#26584D] text-white mr-1">معتمد 🎖️</span>
+          </div>
+        </div>
+
+        <!-- Liquid Glass Country Badge (with China glow) -->
+        <div id="heroLiquidBadge" class="liquid-glass inline-flex items-center gap-2 sm:gap-3 px-3.5 py-1.5 sm:px-5 sm:py-2 rounded-full font-extrabold text-xs sm:text-base">
+          <span id="heroFlag" class="text-xl sm:text-2xl">🇹🇷</span>
+          <span id="heroCountryName" class="font-cairo tracking-wide">تركيا • إسطنبول وأنقرة</span>
+          <span class="w-2 h-2 rounded-full bg-emerald-400 glow-dot"></span>
+        </div>
+
+      </div>
+
+      <!-- Center Typography Area inside Hero Card -->
+      <div class="relative z-20 max-w-3xl text-right my-auto py-6 sm:py-8">
+        
+        <!-- Kicker Tagline -->
+        <p id="heroKicker" class="text-xs sm:text-sm font-bold text-emerald-300 font-cairo drop-shadow-md mb-2">
+          وجهتك التعليمية الأولى • قبول مجاني وخصومات 75%
+        </p>
+
+        <!-- Grand Display Headline (White text from reference website) -->
+        <h1 id="heroHeadline" class="text-2xl sm:text-4xl lg:text-5xl font-black text-white font-cairo leading-tight sm:leading-snug drop-shadow-lg">
+          ادرس في أرقى الجامعات التركية المعتمدة عالمياً
+        </h1>
+
+        <!-- Concise Subtext -->
+        <p id="heroSubtext" class="text-white/90 text-xs sm:text-base leading-relaxed mt-2.5 sm:mt-4 max-w-2xl font-normal drop-shadow">
+          بوابتك المعتمدة بإشراف الأستاذ معاذ عناني، الوكيل الرسمي لشركة برايم في دولة قطر، للحصول على القبول الجامعي المجاني بدون شروط يوس أو سات مع حزم الدفع لمرة واحدة الشاملة.
+        </p>
+
+        <!-- The Floating Search / Action Capsule (Responsive on phone) -->
+        <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 bg-white/95 p-1.5 sm:p-2 rounded-2xl sm:rounded-full shadow-2xl max-w-xl border border-white">
+          <input type="text" id="heroQuickSearch" oninput="syncHeroSearch()" placeholder="ابحث عن تخصصك المفضل (طب، هندسة، إدارة...)" class="flex-1 bg-transparent px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm text-[#15221F] placeholder-[#7E8D88] focus:outline-none font-cairo">
+          <a href="#universities" class="px-5 py-2.5 sm:py-3 rounded-xl sm:rounded-full bg-[#26584D] hover:bg-[#1C443C] text-white font-bold text-xs sm:text-sm transition-all shadow-md flex items-center justify-center gap-2 text-center">
+            <span>استكشف الجامعات والمنح</span>
+            <span>←</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Bottom Row inside Hero Card: Stats & Slide Switching Numbers -->
+      <div class="relative z-20 flex flex-wrap items-center justify-between gap-3 pt-3 sm:pt-4 border-t border-white/20 text-xs text-white">
+        
+        <!-- Country Stats -->
+        <div class="flex flex-wrap items-center gap-3 sm:gap-6 font-bold font-cairo text-[11px] sm:text-xs">
+          <div class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span id="heroStat1">200+ جامعة</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span id="heroStat2">خصم 75%</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span id="heroStat3">قبول مجاني</span>
+          </div>
+        </div>
+
+        <!-- Slide Number Indicator Pills (Touch Friendly) -->
+        <div class="flex items-center gap-1 sm:gap-1.5 font-bold">
+          <button onclick="setSlideIndex(0)" id="slideNum0" class="slide-num-btn w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#26584D] text-white flex items-center justify-center text-xs shadow">01</button>
+          <button onclick="setSlideIndex(1)" id="slideNum1" class="slide-num-btn w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/40 hover:bg-white/20 text-white flex items-center justify-center text-xs">02</button>
+          <button onclick="setSlideIndex(2)" id="slideNum2" class="slide-num-btn w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/40 hover:bg-white/20 text-white flex items-center justify-center text-xs">03</button>
+          <button onclick="setSlideIndex(3)" id="slideNum3" class="slide-num-btn w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/40 hover:bg-white/20 text-white flex items-center justify-center text-xs">04</button>
+          <button onclick="setSlideIndex(4)" id="slideNum4" class="slide-num-btn w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/40 hover:bg-white/20 text-white flex items-center justify-center text-xs">05</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Floating Horizontal Capsule Bar (Mobile Responsive Grid / Row) -->
+    <div class="mt-4 sm:mt-6 bg-white p-3 sm:p-4 rounded-2xl sm:rounded-full border border-[#E3DED2] shadow-lg flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4">
+      
+      <div class="grid grid-cols-2 md:flex md:flex-wrap items-center gap-2 sm:gap-4 text-[11px] sm:text-xs font-bold text-[#15221F] font-cairo w-full md:w-auto">
+        <span class="px-2.5 py-1.5 rounded-full bg-[#EBF2F0] text-[#26584D] flex items-center justify-center gap-1 truncate">
+          <span>🏛️</span>
+          <span class="truncate">قبول مباشر</span>
+        </span>
+        <span class="px-2.5 py-1.5 rounded-full bg-[#EBF2F0] text-[#26584D] flex items-center justify-center gap-1 truncate">
+          <span>🎓</span>
+          <span class="truncate">شهادات معتمدة</span>
+        </span>
+        <span class="px-2.5 py-1.5 rounded-full bg-[#EBF2F0] text-[#26584D] flex items-center justify-center gap-1 truncate">
+          <span>💎</span>
+          <span class="truncate">دفع لمرة واحدة</span>
+        </span>
+        <span class="px-2.5 py-1.5 rounded-full bg-[#EBF2F0] text-[#26584D] flex items-center justify-center gap-1 truncate">
+          <span>🇶🇦</span>
+          <span class="truncate">إشراف معاذ عناني</span>
+        </span>
+      </div>
+
+      <!-- Direct Consultation Button -->
+      <a id="heroWhatsAppDirect" href="https://wa.me/905367857843" target="_blank" class="w-full md:w-auto px-5 py-2.5 rounded-full bg-[#26584D] hover:bg-[#1C443C] text-white font-bold text-xs transition-all shadow-md shrink-0 flex items-center justify-center gap-2 text-center">
+        <span>استشارة مجانية مع الوكيل بقطر</span>
+        <span>💬</span>
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- ================= SECTION 2: 4 LANDMARKS PER COUNTRY ================= -->
+  <section id="landmarks" class="py-14 sm:py-20 bg-white border-t border-b border-[#E3DED2] relative">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+        <p class="text-xs tracking-wider text-[#26584D] font-bold mb-1.5 font-cairo uppercase">استكشف البيئة السياحية والحياة الطلابية</p>
+        <h2 id="landmarksSectionTitle" class="text-2xl sm:text-4xl font-extrabold text-[#15221F] font-cairo">أبرز معالم ومدن تركيا الطلابية</h2>
+        <div class="w-16 h-1 bg-[#26584D] mx-auto mt-3 sm:mt-4 rounded-full"></div>
+      </div>
+
+      <!-- 4 Tall Vertical Photo Cards Grid -->
+      <div id="landmarksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Rendered dynamically by JavaScript per active country -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 3: UNIVERSITIES & MAJOR SELECTION ================= -->
+  <section id="universities" class="py-14 sm:py-20 bg-[#F6F3EB] relative">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-10">
+        <div>
+          <span class="text-xs font-semibold text-[#26584D] tracking-wider font-cairo">قاعدة بيانات معتمدة ومحدثة 2026-2027</span>
+          <h2 id="uniSectionTitle" class="text-2xl sm:text-4xl font-extrabold text-[#15221F] font-cairo mt-1">الجامعات والمنح المتاحة في تركيا</h2>
+          <p class="text-xs sm:text-sm text-[#4E5F5A] mt-1.5">اختر تخصصك الأكاديمي لمقارنته مع باقي الجامعات وتأكيد طلب القبول المجاني مباشرة عبر واتساب معاذ عناني (الوكيل الرسمي بقطر).</p>
+        </div>
+
+        <!-- Live Search Input -->
+        <div class="relative w-full lg:w-80">
+          <input type="text" id="uniSearchInput" oninput="applyFilters()" placeholder="ابحث باسم الجامعة، التخصص، أو المدينة..." class="w-full bg-white border border-[#E3DED2] focus:border-[#26584D] rounded-full px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm text-[#15221F] placeholder-[#7E8D88] focus:outline-none focus:ring-2 focus:ring-[#26584D]/20 transition-all font-cairo shadow-sm">
+          <span class="absolute left-3.5 sm:left-4 top-2.5 sm:top-3.5 text-[#26584D]">🔍</span>
+        </div>
+      </div>
+
+      <!-- Major Filter Pills (Mobile Friendly) -->
+      <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-6 sm:mb-8 text-xs font-bold font-cairo">
+        <span class="text-[#15221F] ml-1.5 font-semibold text-[11px] sm:text-xs">التخصص:</span>
+        <button onclick="setMajorFilter('all')" class="major-pill px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[#26584D] bg-[#26584D] text-white shadow-sm text-xs">الكل</button>
+        <button onclick="setMajorFilter('medicine')" class="major-pill px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[#E3DED2] bg-white text-[#4E5F5A] hover:text-[#15221F] shadow-sm text-xs">الطب البشري 🩺</button>
+        <button onclick="setMajorFilter('dentistry')" class="major-pill px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[#E3DED2] bg-white text-[#4E5F5A] hover:text-[#15221F] shadow-sm text-xs">طب الأسنان 🦷</button>
+        <button onclick="setMajorFilter('pharmacy')" class="major-pill px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[#E3DED2] bg-white text-[#4E5F5A] hover:text-[#15221F] shadow-sm text-xs">الصيدلة 💊</button>
+        <button onclick="setMajorFilter('engineering')" class="major-pill px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[#E3DED2] bg-white text-[#4E5F5A] hover:text-[#15221F] shadow-sm text-xs">هندسة وحاسوب 💻</button>
+        <button onclick="setMajorFilter('business')" class="major-pill px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[#E3DED2] bg-white text-[#4E5F5A] hover:text-[#15221F] shadow-sm text-xs">إدارة الأعمال 📊</button>
+      </div>
+
+      <!-- Universities Cards Grid -->
+      <div id="unisGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 4: ONE-TIME PAYMENT SPOTLIGHT ================= -->
+  <section id="onetime" class="py-14 sm:py-20 bg-white border-t border-b border-[#E3DED2] relative">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+        <span class="text-xs font-bold tracking-widest text-[#26584D] font-cairo uppercase">منح استثنائية حصرية</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-[#15221F] font-cairo mt-1">حزم الدفع لمرة واحدة الشاملة</h2>
+        <p class="text-xs sm:text-sm text-[#4E5F5A] mt-1.5">ادفع الرسوم الدراسية مرة واحدة فقط لكامل سنوات التخرج دون أي أقساط سنوية لاحقة!</p>
+        <div class="w-16 h-1 bg-[#26584D] mx-auto mt-3 sm:mt-4 rounded-full"></div>
+      </div>
+
+      <!-- Bento-style Spotlight Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+        
+        <!-- Package 1: Beykent -->
+        <div class="theme-card rounded-2xl sm:rounded-3xl p-5 sm:p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3.5">
+              <span class="px-2.5 py-1 rounded-full bg-[#EBF2F0] text-[#26584D] text-xs font-bold">إسطنبول 🇹🇷</span>
+              <span class="text-xs text-[#7E8D88]">كامل البكالوريوس 4 سنوات</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold text-[#15221F] font-cairo">جامعة بيكنت</h3>
+            <p class="text-xs text-[#4E5F5A] mt-2 leading-relaxed">منحة الـ 4 سنوات كاملة لكافة التخصصات الهندسية والإدارية والأدبية بدفعة واحدة دون أقساط سنوية.</p>
+            <div class="mt-4 p-3.5 sm:p-4 rounded-2xl bg-[#F6F3EB] border border-[#E3DED2]">
+              <div class="text-xs text-[#7E8D88]">الرسوم الإجمالية لكامل سنوات التخرج:</div>
+              <div class="text-xl sm:text-2xl font-black text-[#26584D] mt-1" data-tuition="5500">$5,500 <span class="text-xs font-normal text-[#7E8D88]">مرة واحدة فقط</span></div>
+            </div>
+          </div>
+          <button onclick="openSelectMajorModal('beykent_bach')" class="mt-5 sm:mt-6 w-full py-3 rounded-full bg-[#26584D] hover:bg-[#1C443C] text-white font-bold text-center text-xs transition-all shadow-md shadow-[#26584D]/20">
+            اختيار التخصص ومقارنته ⚖️
+          </button>
+        </div>
+
+        <!-- Package 2: Cyprus CIU -->
+        <div class="theme-card rounded-2xl sm:rounded-3xl p-5 sm:p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3.5">
+              <span class="px-2.5 py-1 rounded-full bg-[#EBF2F0] text-[#26584D] text-xs font-bold">ليفكوشا 🇨🇾</span>
+              <span class="text-xs text-[#7E8D88]">شامل السكن و3 وجبات</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold text-[#15221F] font-cairo">جامعة قبرص الدولية</h3>
+            <p class="text-xs text-[#4E5F5A] mt-2 leading-relaxed">الباقة الطلابية المتكاملة: رسوم دراسة + سكن فندقي حديث + 3 وجبات بوفيه مفتوح يومياً طوال العام الدراسي.</p>
+            <div class="mt-4 p-3.5 sm:p-4 rounded-2xl bg-[#F6F3EB] border border-[#E3DED2]">
+              <div class="text-xs text-[#7E8D88]">الرسوم السنوية الشاملة لكافة المصاريف:</div>
+              <div class="text-xl sm:text-2xl font-black text-[#26584D] mt-1" data-tuition="4200">$4,200 <span class="text-xs font-normal text-[#7E8D88]">سنوياً شامل كل شيء</span></div>
+            </div>
+          </div>
+          <button onclick="openSelectMajorModal('ciu_cyprus')" class="mt-5 sm:mt-6 w-full py-3 rounded-full bg-[#26584D] hover:bg-[#1C443C] text-white font-bold text-center text-xs transition-all shadow-md shadow-[#26584D]/20">
+            اختيار التخصص ومقارنته ⚖️
+          </button>
+        </div>
+
+        <!-- Package 3: Nişantaşı -->
+        <div class="theme-card rounded-2xl sm:rounded-3xl p-5 sm:p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3.5">
+              <span class="px-2.5 py-1 rounded-full bg-[#EBF2F0] text-[#26584D] text-xs font-bold">إسطنبول (مسلك 1453) 🇹🇷</span>
+              <span class="text-xs text-[#7E8D88]">ذكاء اصطناعي وهندسة</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold text-[#15221F] font-cairo">جامعة نيشان تاشي</h3>
+            <p class="text-xs text-[#4E5F5A] mt-2 leading-relaxed">أكبر حرم تكنولوجي جامعي في أوروبا (نظرة للمستقبل والذكاء الاصطناعي مع تدريب عملي وشراكات تقنية).</p>
+            <div class="mt-4 p-3.5 sm:p-4 rounded-2xl bg-[#F6F3EB] border border-[#E3DED2]">
+              <div class="text-xs text-[#7E8D88]">الرسوم الإجمالية لكامل سنوات التخرج:</div>
+              <div class="text-xl sm:text-2xl font-black text-[#26584D] mt-1" data-tuition="5000">$5,000 <span class="text-xs font-normal text-[#7E8D88]">مرة واحدة فقط</span></div>
+            </div>
+          </div>
+          <button onclick="openSelectMajorModal('nisantasi_bach')" class="mt-5 sm:mt-6 w-full py-3 rounded-full bg-[#26584D] hover:bg-[#1C443C] text-white font-bold text-center text-xs transition-all shadow-md shadow-[#26584D]/20">
+            اختيار التخصص ومقارنته ⚖️
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 5: OFFICIAL REPRESENTATIVE CREDENTIALS ================= -->
+  <section class="py-14 sm:py-20 bg-[#F6F3EB] relative">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      
+      <div class="theme-card rounded-2xl sm:rounded-[2.5rem] p-5 sm:p-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-center">
+          
+          <!-- Portrait -->
+          <div class="lg:col-span-4 flex justify-center">
+            <div class="relative w-56 sm:w-72 aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden border-4 border-white shadow-2xl bg-[#F6F3EB]">
+              <img src="assets/moaaz_enany.jpg" alt="معاذ عناني - الوكيل الرسمي لشركة برايم في قطر" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              <div class="absolute bottom-3.5 inset-x-3.5 text-center">
+                <span class="inline-block px-3.5 py-1.5 rounded-full bg-[#26584D] text-white text-xs font-black shadow">
+                  وكيل معتمد رسمي 🇶🇦
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bio & Official Guarantees -->
+          <div class="lg:col-span-8 flex flex-col gap-4 sm:gap-6 text-right">
+            
+            <div>
+              <span class="text-xs font-bold text-[#26584D] uppercase tracking-wider font-cairo">التمثيل الأكاديمي الحصري بدولة قطر</span>
+              <h2 class="text-2xl sm:text-4xl font-extrabold text-[#15221F] font-cairo mt-1">
+                المستشار الأكاديمي: معاذ عناني
+              </h2>
+              <p class="text-xs sm:text-sm font-bold text-[#4E5F5A] mt-1 font-cairo">
+                الوكيل الرسمي المعتمد لشركة برايم (PRIME) الدولية في دولة قطر 🇶🇦
+              </p>
+            </div>
+
+            <p class="text-[#4E5F5A] text-xs sm:text-base leading-relaxed">
+              بصفتنا الوكيل الرسمي لشركة برايم الدولية في دولة قطر، نضع بين يديك شبكة واسعة من كبرى الجامعات المعتمدة عالمياً في تركيا، روسيا، ماليزيا، الصين، وقبرص. نضمن لطلابنا في قطر والعالم العربي الحصول على القبول الأكاديمي المباشر مجاناً بدون أي عمولات، مع تقديم الاستشارات المجانية لاختيار التخصص والجامعة الأنسب، وتوفير باقات الدفع لمرة واحدة الحصرية.
+            </p>
+
+            <!-- Core Guarantees -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-1 sm:pt-2">
+              <div class="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F6F3EB] border border-[#E3DED2]">
+                <div class="text-[#26584D] font-black text-xl sm:text-2xl font-cairo">100%</div>
+                <div class="text-xs text-[#15221F] font-bold mt-1 font-cairo">قبول مضمون</div>
+                <div class="text-[10px] sm:text-[11px] text-[#7E8D88]">للطلاب المستوفين للشروط الأكاديمية</div>
+              </div>
+
+              <div class="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F6F3EB] border border-[#E3DED2]">
+                <div class="text-[#26584D] font-black text-xl sm:text-2xl font-cairo">0%</div>
+                <div class="text-xs text-[#15221F] font-bold mt-1 font-cairo">عمولة إضافية</div>
+                <div class="text-[10px] sm:text-[11px] text-[#7E8D88]">كافة خدمات القبول للجامعات الشريكة مجانية</div>
+              </div>
+
+              <div class="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#F6F3EB] border border-[#E3DED2]">
+                <div class="text-[#26584D] font-black text-xl sm:text-2xl font-cairo">24/7</div>
+                <div class="text-xs text-[#15221F] font-bold mt-1 font-cairo">متابعة وإشراف</div>
+                <div class="text-[10px] sm:text-[11px] text-[#7E8D88]">دعم متواصل حتى استقرار الطالب بالسكن</div>
+              </div>
+            </div>
+
+            <!-- Contact Bar -->
+            <div class="pt-3 sm:pt-4 flex flex-wrap items-center gap-3 sm:gap-4">
+              <a href="https://wa.me/905367857843?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D8%B3%D8%AA%D8%A7%D8%B0%20%D9%85%D8%B9%D8%A7%D8%B0%20%D8%B9%D9%86%D8%A7%D9%86%D9%8A%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A9%20%D8%AE%D8%A7%D8%B5%D8%A9%20%D9%84%D9%84%D8%AF%D8%B1%D8%A7%D8%B3%D8%A9%20%D8%A8%D8%A7%D9%84%D8%AE%D8%A7%D8%B1%D8%AC%20%D8%A8%D8%B5%D9%81%D8%AA%D9%83%20%D8%A7%D9%84%D9%88%D9%83%D9%8A%D9%84%20%D8%A7%D9%84%D8%B1%D8%B3%D9%85%D9%8A%20%D9%81%D9%8A%20%D9%82%D8%B7%D8%B1" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#26584D] hover:bg-[#1C443C] text-white font-bold text-xs transition-all shadow-lg shadow-[#26584D]/25">
+                <span>تواصل واتساب مع معاذ عناني</span>
+                <span>💬</span>
+              </a>
+              <span class="text-xs text-[#15221F] font-bold dir-ltr bg-[#F6F3EB] px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-full border border-[#E3DED2]">+90 536 785 78 43</span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="py-10 sm:py-12 bg-[#26584D] text-white text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 text-center md:text-right">
+      <div class="flex items-center justify-center gap-2 sm:gap-3">
+        <span class="text-base font-extrabold font-cairo">برايم | PRIME</span>
+        <span>•</span>
+        <span class="text-white/80">بوابة القبولات والمنح الجامعية الدولية المعتمدة</span>
+      </div>
+      <div class="text-white/80 text-[11px] sm:text-xs">
+        جميع الحقوق محفوظة © 2026 PRIME | إشراف: معاذ عناني - الوكيل الرسمي في دولة قطر 🇶🇦
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODAL: INITIAL WELCOME WITH 5 SCENIC COUNTRY CARDS (Requested by User) ================= -->
+  <div id="welcomeModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-3 sm:p-4 transition-opacity duration-300">
+    <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 max-w-2xl w-full border border-[#E3DED2] text-center relative shadow-2xl max-h-[92vh] overflow-y-auto">
+      
+      <!-- Official Badge at top of Welcome Modal -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EBF2F0] text-[#26584D] text-xs font-bold font-cairo mb-3 border border-[#26584D]/20">
+        <span>🇶🇦 معاذ عناني • الوكيل الرسمي لشركة برايم في دولة قطر</span>
+      </div>
+
+      <h3 class="text-xl sm:text-2xl font-extrabold text-[#15221F] font-cairo">أين ترغب في بدء رحلتك الدراسية؟</h3>
+      <p class="text-xs text-[#7E8D88] mt-1.5 max-w-md mx-auto">
+        اختر وجهتك المفضلة لتخصيص محتوى الموقع وثيم الدولة أو اضغط تخطي لاستعراض كافة الوجهات المتاحة.
+      </p>
+
+      <!-- 5 Scenic Landscape Country Cards Grid (Exact Request from User!) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5 text-right font-cairo">
+        
+        <!-- Turkey Card -->
+        <button onclick="chooseDestinationModal('turkey')" class="group relative rounded-2xl overflow-hidden h-28 sm:h-32 border-2 border-[#E3DED2] hover:border-[#26584D] shadow-sm transition-all text-right flex flex-col justify-end p-3.5 focus:outline-none">
+          <img src="assets/modal_turkey.jpg" alt="تركيا" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/20 group-hover:from-black/95 transition-colors"></div>
+          <div class="relative z-10 text-white">
+            <div class="flex items-center gap-2 mb-0.5">
+              <span class="text-xl">🇹🇷</span>
+              <span class="text-sm sm:text-base font-extrabold">تركيا • إسطنبول وأنقرة</span>
+            </div>
+            <p class="text-[11px] text-white/85 line-clamp-1 font-medium">خصومات حتى 75% ودفع لمرة واحدة شامل كامل سنوات التخرج</p>
+          </div>
+        </button>
+
+        <!-- Russia Card -->
+        <button onclick="chooseDestinationModal('russia')" class="group relative rounded-2xl overflow-hidden h-28 sm:h-32 border-2 border-[#E3DED2] hover:border-[#26584D] shadow-sm transition-all text-right flex flex-col justify-end p-3.5 focus:outline-none">
+          <img src="assets/modal_russia.jpg" alt="روسيا" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/20 group-hover:from-black/95 transition-colors"></div>
+          <div class="relative z-10 text-white">
+            <div class="flex items-center gap-2 mb-0.5">
+              <span class="text-xl">🇷🇺</span>
+              <span class="text-sm sm:text-base font-extrabold">روسيا • موسكو وسانت بطرسبرغ</span>
+            </div>
+            <p class="text-[11px] text-white/85 line-clamp-1 font-medium">كليات الطب البشري المعتمدة عالمياً باللغة الإنجليزية بدون يوس</p>
+          </div>
+        </button>
+
+        <!-- Malaysia Card -->
+        <button onclick="chooseDestinationModal('malaysia')" class="group relative rounded-2xl overflow-hidden h-28 sm:h-32 border-2 border-[#E3DED2] hover:border-[#26584D] shadow-sm transition-all text-right flex flex-col justify-end p-3.5 focus:outline-none">
+          <img src="assets/modal_malaysia.jpg" alt="ماليزيا" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/20 group-hover:from-black/95 transition-colors"></div>
+          <div class="relative z-10 text-white">
+            <div class="flex items-center gap-2 mb-0.5">
+              <span class="text-xl">🇲🇾</span>
+              <span class="text-sm sm:text-base font-extrabold">ماليزيا • كوالالمبور</span>
+            </div>
+            <p class="text-[11px] text-white/85 line-clamp-1 font-medium">شهادات دولية وتوأمة مع أعرق الجامعات البريطانية والأسترالية</p>
+          </div>
+        </button>
+
+        <!-- China Card -->
+        <button onclick="chooseDestinationModal('china')" class="group relative rounded-2xl overflow-hidden h-28 sm:h-32 border-2 border-[#E3DED2] hover:border-[#26584D] shadow-sm transition-all text-right flex flex-col justify-end p-3.5 focus:outline-none">
+          <img src="assets/modal_china.jpg" alt="الصين" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/20 group-hover:from-black/95 transition-colors"></div>
+          <div class="relative z-10 text-white">
+            <div class="flex items-center gap-2 mb-0.5">
+              <span class="text-xl">🇨🇳</span>
+              <span class="text-sm sm:text-base font-extrabold">الصين • بكين وشنغهاي</span>
+            </div>
+            <p class="text-[11px] text-white/85 line-clamp-1 font-medium">منح دراسية حكومية ممولة بالكامل 100% مع سكن وراتب شهري</p>
+          </div>
+        </button>
+
+        <!-- Cyprus Card (Full width on sm) -->
+        <button onclick="chooseDestinationModal('cyprus')" class="sm:col-span-2 group relative rounded-2xl overflow-hidden h-28 sm:h-32 border-2 border-[#E3DED2] hover:border-[#26584D] shadow-sm transition-all text-right flex flex-col justify-end p-3.5 focus:outline-none">
+          <img src="assets/modal_cyprus.jpg" alt="قبرص" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/20 group-hover:from-black/95 transition-colors"></div>
+          <div class="relative z-10 text-white flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+            <div>
+              <div class="flex items-center gap-2 mb-0.5">
+                <span class="text-xl">🇨🇾</span>
+                <span class="text-sm sm:text-base font-extrabold">قبرص • ليفكوشا وفاماجوستا</span>
+              </div>
+              <p class="text-[11px] text-white/85 line-clamp-1 font-medium">باقات الدفع لمرة واحدة الشاملة للدراسة والسكن الفندقي و3 وجبات يومياً</p>
+            </div>
+            <span class="hidden sm:inline-block px-3 py-1 rounded-full bg-[#26584D] text-white text-[11px] font-bold shrink-0">اختيار الوجهة ←</span>
+          </div>
+        </button>
+
+      </div>
+
+      <div class="mt-5 flex items-center justify-between gap-3 pt-3 border-t border-[#E3DED2]">
+        <button onclick="closeWelcomeModal()" class="px-5 py-2 rounded-full bg-[#26584D] text-white text-xs font-bold hover:bg-[#1C443C] transition-all shadow-sm">
+          استعراض كافة الجامعات
+        </button>
+        <button onclick="closeWelcomeModal()" class="text-xs text-[#7E8D88] hover:text-[#15221F] underline">
+          تخطي وتصفح البوابة
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= MODAL: SPECIALIZATION SELECTION, COMPARISON & WHATSAPP REDIRECT ================= -->
+  <div id="selectMajorModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/60 backdrop-blur-md p-3 sm:p-4 overflow-y-auto">
+    <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 max-w-3xl w-full border border-[#E3DED2] relative shadow-2xl my-6 max-h-[92vh] overflow-y-auto">
+      
+      <div class="flex items-center justify-between pb-3.5 border-b border-[#E3DED2] mb-5">
+        <div class="flex items-center gap-2">
+          <span class="text-xl sm:text-2xl">🎓</span>
+          <div>
+            <h3 class="text-lg sm:text-xl font-bold text-[#15221F] font-cairo">تأكيد البرنامج والمقارنة الأكاديمية</h3>
+            <p class="text-[11px] sm:text-xs text-[#7E8D88]">معاذ عناني • الوكيل الرسمي لشركة برايم في قطر</p>
+          </div>
+        </div>
+        <button onclick="closeSelectMajorModal()" class="text-[#7E8D88] hover:text-[#15221F] text-xl p-1">✕</button>
+      </div>
+
+      <!-- Selected University Summary Card -->
+      <div id="modalSelectedUniCard" class="p-4 sm:p-5 rounded-2xl bg-[#EBF2F0] border border-[#26584D]/30 mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Comparison Section: Same Major in Other Universities -->
+      <div class="mb-5">
+        <h4 class="text-xs sm:text-sm font-bold text-[#15221F] font-cairo mb-2.5 flex items-center gap-1.5">
+          <span>⚖️</span>
+          <span>مقارنة هذا التخصص مع باقي الجامعات المعتمدة:</span>
+        </h4>
+        <div id="modalComparisonTable" class="overflow-x-auto rounded-xl sm:rounded-2xl border border-[#E3DED2]">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- Student Confirmation Form -->
+      <div class="p-4 sm:p-5 rounded-2xl bg-[#F6F3EB] border border-[#E3DED2] mb-5">
+        <h4 class="text-xs sm:text-sm font-bold text-[#15221F] font-cairo mb-3">بياناتك لتأكيد الحجز والتواصل مع الوكيل بقطر:</h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+          <div>
+            <label class="block text-xs text-[#4E5F5A] mb-1 font-medium">اسم الطالب الكريم:</label>
+            <input type="text" id="studentNameInput" placeholder="أدخل اسمك الكريم..." class="w-full bg-white border border-[#E3DED2] focus:border-[#26584D] rounded-xl px-3 py-2 sm:px-3.5 sm:py-2.5 text-xs text-[#15221F] placeholder-[#7E8D88] focus:outline-none focus:ring-1 focus:ring-[#26584D] font-cairo">
+          </div>
+          <div>
+            <label class="block text-xs text-[#4E5F5A] mb-1 font-medium">رقم الهاتف / الواتساب:</label>
+            <input type="tel" id="studentPhoneInput" placeholder="+974 / +90 / ..." class="w-full bg-white border border-[#E3DED2] focus:border-[#26584D] rounded-xl px-3 py-2 sm:px-3.5 sm:py-2.5 text-xs text-[#15221F] placeholder-[#7E8D88] focus:outline-none focus:ring-1 focus:ring-[#26584D] font-cairo dir-ltr">
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-end gap-2.5 sm:gap-3 pt-1 font-cairo">
+        <button onclick="closeSelectMajorModal()" class="w-full sm:w-auto px-5 py-2.5 rounded-full border border-[#E3DED2] text-[#4E5F5A] hover:text-[#15221F] hover:bg-[#F6F3EB] text-xs font-bold order-2 sm:order-1">
+          إلغاء
+        </button>
+        <button onclick="confirmAndSendWhatsApp()" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#26584D] hover:bg-[#1C443C] text-white font-bold text-xs shadow-lg shadow-[#26584D]/25 active:scale-95 transition-all order-1 sm:order-2">
+          <span>تأكيد الحجز وإرسال التفاصيل لواتساب معاذ عناني</span>
+          <span>💬</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= CLIENT JAVASCRIPT ENGINE ================= -->
+  <script>
+    // DATA INJECTED SAFELY
+    const COUNTRIES_DATA = [{"id": "01", "key": "turkey", "flag": "🇹🇷", "name": "تركيا", "cities": "إسطنبول وأنقرة", "kicker": "وجهتك التعليمية الأولى • قبول مجاني وخصومات 75%", "headline": "ادرس في أرقى الجامعات التركية المعتمدة عالمياً", "subtext": "بوابتك المباشرة للقبول الجامعي المجاني بدون شروط يوس أو سات مع حزم الدفع لمرة واحدة الحصرية.", "bgImage": "assets/hero_turkey.jpg", "accent": "#F97316", "badgeText": "تركيا الفاخرة", "stat1": "200+ جامعة معتمدة", "stat2": "خصومات حتى 75%", "stat3": "قبول مجاني 100%", "landmarksTitle": "أبرز معالم ومدن تركيا الطلابية والسياحية", "landmarks": [{"title": "برج غلطة التاريخي", "city": "إسطنبول الأوروبية", "tag": "معلم №1", "desc": "إطلالة بانورامية ساحرة على مضيق البوسفور والقرن الذهبي.", "image": "assets/tr_galata.jpg"}, {"title": "قلعة الفتاة الساحرة", "city": "مضيق البوسفور", "tag": "معلم №2", "desc": "أيقونة إسطنبول البحرية الخالدة وسط أمواج البوسفور المتلألئة.", "image": "assets/tr_maidens.jpg"}, {"title": "آيا صوفيا العريقة", "city": "ميدان السلطان أحمد", "tag": "معلم №3", "desc": "صرح حضاري ومعماري عالمي يجمع عبق التاريخ وأصالة الشرق.", "image": "assets/tr_hagiasophia.jpg"}, {"title": "جسر البوسفور المعلق", "city": "إسطنبول القارتين", "tag": "معلم №4", "desc": "الشريان المضيء الذي يربط بين قارتي آسيا وأوروبا.", "image": "assets/tr_bosphorus.jpg"}]}, {"id": "02", "key": "russia", "flag": "🇷🇺", "name": "روسيا", "cities": "موسكو وقازان وسانت بطرسبرغ", "kicker": "كليات الطب البشري العالمية • اعتراف عربي ودولي", "headline": "دراسة الطب البشري وطب الأسنان بالإنجليزية في روسيا", "subtext": "أعرق الجامعات الطبية كجامعة سيشينوف وبافلوف بدون يوس أو سات وتكاليف دراسية ميسرة للغاية.", "bgImage": "assets/hero_russia.jpg", "accent": "#38BDF8", "badgeText": "روسيا العريقة", "stat1": "الأولى طبياً في أوروبا الشرقية", "stat2": "دراسة باللغة الإنجليزية", "stat3": "اعتماد عربي شامل", "landmarksTitle": "أبرز معالم وعواصم روسيا التاريخية والعلمية", "landmarks": [{"title": "الساحة الحمراء وسانت باسيليوس", "city": "موسكو العاصمة", "tag": "معلم №1", "desc": "القباب الملونة الأسطورية والساحة التاريخية الكبرى في الشتاء.", "image": "assets/ru_redsquare.jpg"}, {"title": "قصر الكرملين الفيدرالي", "city": "قلب موسكو", "tag": "معلم №2", "desc": "أبراج الكرملين الحمراء وجدرانه التاريخية المطلة على نهر موسكفا.", "image": "assets/ru_kremlin.jpg"}, {"title": "قنوات سانت بطرسبرغ وقصورها", "city": "سانت بطرسبرغ", "tag": "معلم №3", "desc": "العاصمة الثقافية وقصور الإرميتاج والجسور المتحركة فوق القنوات.", "image": "assets/ru_stpetersburg.jpg"}, {"title": "مسجد قول شريف والكرملين", "city": "قازان الفيدرالية", "tag": "معلم №4", "desc": "درة المعمار الإسلامي الروسي وبيئة مثالية ومرحبة بالطلاب العرب.", "image": "assets/ru_kazan.jpg"}]}, {"id": "03", "key": "malaysia", "flag": "🇲🇾", "name": "ماليزيا", "cities": "كوالالمبور وسيلانجور", "kicker": "التعليم البريطاني والأسترالي المزدوج • بيئة راقية", "headline": "شهادات بريطانية وأسترالية مزدوجة في أرقى جامعات كوالالمبور", "subtext": "جامعات مصنفة ضمن أفضل 60 عالمياً مع دراسة 100% باللغة الإنجليزية في بيئة إسلامية متطورة.", "bgImage": "assets/hero_malaysia.jpg", "accent": "#34D399", "badgeText": "ماليزيا المتطورة", "stat1": "تصنيف QS 60 عالمياً", "stat2": "شهادة بريطانية مزدوجة", "stat3": "دراسة 100% بالإنجليزية", "landmarksTitle": "أبرز معالم كوالالمبور والطبيعة الاستوائية الساحرة", "landmarks": [{"title": "برجا بتروناس التوأم", "city": "كوالالمبور", "tag": "معلم №1", "desc": "الأيقونة المعمارية الأكثر شهرة في جنوب شرق آسيا وأفق المدينة.", "image": "assets/my_petronas.jpg"}, {"title": "كهوف باتو والسلالم الملونة", "city": "سيلانجور", "tag": "معلم №2", "desc": "معلم سياحي وطبيعي استثنائي يجذب الزوار من كافة أنحاء العالم.", "image": "assets/my_batucaves.jpg"}, {"title": "جسر لانكاوي المعلق في السحاب", "city": "جزيرة لانكاوي", "tag": "معلم №3", "desc": "تجربة خيالية فوق قمم الجبال والغابات الاستوائية المطيرة.", "image": "assets/my_langkawi.jpg"}, {"title": "ساحة ميرديكا وأفق العاصمة", "city": "مركز كوالالمبور", "tag": "معلم №4", "desc": "المركز التاريخي والحي المالي النابض بالحياة والتنوع الثقافي.", "image": "assets/my_merdeka.jpg"}]}, {"id": "04", "key": "china", "flag": "🇨🇳", "name": "الصين", "cities": "بكين وشنغهاي وهانغتشو", "kicker": "منح الحكومة الصينية CSC الممولة بالكامل 100%", "headline": "ادرس مجاناً في كبرى جامعات آسيا والعالم مع سكن وراتب شهري", "subtext": "منح رئاسية وحكومية تغطي الرسوم الدراسية بالكامل مع سكن جامعي مجاني وراتب شهري للطلاب المتفوقين.", "bgImage": "assets/hero_china.jpg", "accent": "#F43F5E", "badgeText": "الصين العظيمة", "stat1": "إعفاء 100% من الرسوم", "stat2": "سكن جامعي فاخر مجاني", "stat3": "راتب شهري حتى 3500 يوان", "landmarksTitle": "أبرز عجائب الصين وأجوائها الاحتفالية المبهرة", "landmarks": [{"title": "سور الصين العظيم الملحمي", "city": "جبال بكين", "tag": "معلم №1", "desc": "أعظم إنجاز بشري تاريخي ممتد عبر القمم والجبال الساحرة.", "image": "assets/cn_greatwall.jpg"}, {"title": "تنين الاحتفالات الصيني المبهر", "city": "مهرجان الفوانيس والربيع", "tag": "معلم №2", "desc": "عروض التنين التراثي وسط الألعاب النارية وفوانيس الإضاءة الذهبية.", "image": "assets/cn_dragon.jpg"}, {"title": "المدينة المحرمة التاريخية", "city": "بكين العاصمة", "tag": "معلم №3", "desc": "أكبر قصر إمبراطوري قديم محفوظ في العالم بعمارته الذهبية الخالدة.", "image": "assets/cn_forbiddencity.jpg"}, {"title": "ناطحات سحاب وواجهة شنغهاي", "city": "شنغهاي المستقبل", "tag": "معلم №4", "desc": "برج لؤلؤة الشرق وأضواء المستقبل على ضفاف نهر هوانغبو.", "image": "assets/cn_shanghai.jpg"}]}, {"id": "05", "key": "cyprus", "flag": "🇨🇾", "name": "قبرص", "cities": "ليفكوشا وفاماجوستا", "kicker": "باقات شاملة للدراسة والسكن و3 وجبات يومياً", "headline": "باقات الدفع لمرة واحدة الشاملة للسكن والوجبات في قبرص", "subtext": "حزم متكاملة تضمن لك تخرجك لـ 4 سنوات بدفعة واحدة تشمل السكن الجامعي الفندقي والوجبات الغذائية اليومية.", "bgImage": "assets/hero_cyprus.jpg", "accent": "#FBBF24", "badgeText": "قبرص الساحلية", "stat1": "دفع لمرة واحدة لـ 4 سنوات", "stat2": "شامل السكن الفندقي", "stat3": "3 وجبات غذائية يومياً", "landmarksTitle": "أبرز معالم قبرص وجزر البحر الأبيض المتوسط الساحرة", "landmarks": [{"title": "قلعة وميناء كيرينيا التاريخي", "city": "ساحل كيرينيا", "tag": "معلم №1", "desc": "حصن أثري عريق يطل على مياه البحر الأبيض المتوسط الفيروزية.", "image": "assets/cy_kyrenia.jpg"}, {"title": "شواطئ البحر المتوسط الفيروزية", "city": "الساحل الشمالي", "tag": "معلم №2", "desc": "رمال ذهبية ومياه كريستالية وطقس مشمس ومعتدل طوال العام.", "image": "assets/cy_beach.jpg"}, {"title": "أسوار فاماجوستا التاريخية", "city": "مدينة فاماجوستا", "tag": "معلم №3", "desc": "عمارة العصور الوسطى الإيطالية والبيزنطية المحفوظة بعناية.", "image": "assets/cy_famagusta.jpg"}, {"title": "حرم الجامعات وواحات النخيل", "city": "ليفكوشا العاصمة", "tag": "معلم №4", "desc": "مجمعات جامعية حديثة توفر بيئة دراسية وترفيهية متكاملة.", "image": "assets/cy_campus.jpg"}]}];
+    const UNIS_DATABASE = [{"id": "beykent_bach", "name": "جامعة بيكنت", "country": "تركيا 🇹🇷", "countryKey": "turkey", "city": "إسطنبول", "degree": "بكالوريوس (كافة التخصصات)", "field": "هندسة وبرمجيات، إدارة، إعلام", "majorKey": "engineering", "tuitionUsd": 5500, "paymentScheme": "دفعة واحدة لكامل الـ 4 سنوات", "lang": "الإنجليزية / التركية", "scholarship": "منحة الدفع لمرة واحدة بدون أي أقساط سنوية لاحقة", "perks": "معتمدة دولياً ومدرجة في قطر وكافة الدول العربية", "badge": "الأكثر طلباً - دفعة واحدة 💎"}, {"id": "beykent_assoc", "name": "جامعة بيكنت - دبلوم سنتين", "country": "تركيا 🇹🇷", "countryKey": "turkey", "city": "إسطنبول", "degree": "دبلوم فني وطبي (سنتين)", "field": "تخدير، تمريض، تقنيات حاسوب", "majorKey": "medicine", "tuitionUsd": 1800, "paymentScheme": "دفعة واحدة لكامل السنتين", "lang": "الإنجليزية / التركية", "scholarship": "رسوم السنتين كاملة 1,800$ فقط لمرة واحدة", "perks": "إمكانية استكمال البكالوريوس بعد التخرج مباشرة", "badge": "أفضل سعر دبلوم ⚡"}, {"id": "nisantasi_bach", "name": "جامعة نيشان تاشي", "country": "تركيا 🇹🇷", "countryKey": "turkey", "city": "إسطنبول (مسلك 1453)", "degree": "بكالوريوس هندسة وذكاء اصطناعي", "field": "هندسة برمجيات، ذكاء اصطناعي، عمارة", "majorKey": "engineering", "tuitionUsd": 5000, "paymentScheme": "دفعة واحدة لكامل سنوات التخرج", "lang": "الإنجليزية", "scholarship": "حزمة 5,000$ لمرة واحدة تغطي كافة سنوات الدراسة", "perks": "حرم تكنولوجي عملاق ومختبرات ذكاء اصطناعي متقدمة", "badge": "تقنية وهندسة 🤖"}, {"id": "gelisim_bach", "name": "جامعة جيليشيم", "country": "تركيا 🇹🇷", "countryKey": "turkey", "city": "إسطنبول (أفجلار)", "degree": "بكالوريوس إدارة وطيران وإعلام", "field": "إدارة أعمال، طيران مدني، علاقات عامة", "majorKey": "business", "tuitionUsd": 5500, "paymentScheme": "دفعة واحدة لكامل سنوات التخرج", "lang": "الإنجليزية / التركية", "scholarship": "حزمة الدفع لمرة واحدة مع اعتمادات AQAS وABET", "perks": "أكثر من 65 برنامج معتمد أوروبياً ودولياً", "badge": "اعتماد أوروبي AQAS ⭐"}, {"id": "gelisim_dent", "name": "جامعة جيليشيم - طب أسنان", "country": "تركيا 🇹🇷", "countryKey": "turkey", "city": "إسطنبول", "degree": "طب وجراحة الفم والأسنان (5 سنوات)", "field": "طب الأسنان السريري والجراحي", "majorKey": "dentistry", "tuitionUsd": 29000, "paymentScheme": "دفعة واحدة لكامل الـ 5 سنوات", "lang": "الإنجليزية", "scholarship": "شاملة كامل سنوات الدراسة والتدريب السريري التخصصي", "perks": "مستشفى أسنان متطور ومحاكيات رقمية فائقة الدقة", "badge": "طب أسنان تخصصي 🦷"}, {"id": "istinye_med", "name": "جامعة استينيا", "country": "تركيا 🇹🇷", "countryKey": "turkey", "city": "إسطنبول (توبكابي)", "degree": "الطب البشري العام (MBBS - 6 سنوات)", "field": "الطب والجراحة العامة", "majorKey": "medicine", "tuitionUsd": 47000, "paymentScheme": "دفعة واحدة لكامل الـ 6 سنوات", "lang": "الإنجليزية", "scholarship": "أقوى صرح طبي تركي تابع لمجموعة مستشفيات ميديكال بارك", "perks": "تدريب سريري مكثف في 30+ مستشفى معتمد دولياً", "badge": "النخبة الطبية الأولى 🩺"}, {"id": "kent_dent", "name": "جامعة إسطنبول كانط - طب أسنان", "country": "تركيا 🇹🇷", "countryKey": "turkey", "city": "إسطنبول (ميدان تقسيم)", "degree": "طب وجراحة الأسنان", "field": "طب وجراحة الفم والأسنان", "majorKey": "dentistry", "tuitionUsd": 24000, "paymentScheme": "دفعة واحدة لكامل سنوات التخرج", "lang": "الإنجليزية / التركية", "scholarship": "حزمة الدفع لمرة واحدة لطب الأسنان في قلب إسطنبول", "perks": "موقع حيوي ومختبرات تخصصية معتمدة دولياً", "badge": "قلب إسطنبول (تقسيم) 📍"}, {"id": "kent_pharm", "name": "جامعة إسطنبول كانط - صيدلة", "country": "تركيا 🇹🇷", "countryKey": "turkey", "city": "إسطنبول (ميدان تقسيم)", "degree": "صيدلة كلينيكال (ماجستير متصل 5 سنوات)", "field": "العلوم الصيدلانية والصناعة الدوائية", "majorKey": "pharmacy", "tuitionUsd": 24000, "paymentScheme": "دفعة واحدة لكامل الـ 5 سنوات", "lang": "الإنجليزية", "scholarship": "شاملة كامل سنوات دراسة الصيدلة بدون أي أقساط سنوية", "perks": "تدريب معتمد في كبرى مصانع الأدوية والمشافي", "badge": "صيدلة كلينيكال 💊"}, {"id": "uskudar_med", "name": "جامعة أوسكودار", "country": "تركيا 🇹🇷", "countryKey": "turkey", "city": "إسطنبول (أوسكودار)", "degree": "بكالوريوس العلوم الصحية والطب", "field": "طب بشري، علم نفس، هندسة طبية", "majorKey": "medicine", "tuitionUsd": 3800, "paymentScheme": "قسط سنوي ميسر ($3,800/سنوياً)", "lang": "الإنجليزية / التركية", "scholarship": "خصم حصري عبر ممثل قطر PRIME بنسبة 50%", "perks": "مستشفى NP إسطنبول الرائد في علوم الأعصاب والطب النفسي", "badge": "رائدة العلوم الصحية 🧬"}, {"id": "sechenov_med", "name": "جامعة سيشينوف الطبية الأولى", "country": "روسيا 🇷🇺", "countryKey": "russia", "city": "موسكو", "degree": "الطب البشري العام (MBBS - 6 سنوات)", "field": "الطب البشري والجراحة العامة", "majorKey": "medicine", "tuitionUsd": 7500, "paymentScheme": "قسط سنوي ($7,500/سنوياً)", "lang": "الإنجليزية", "scholarship": "أعرق وأكبر جامعة طبية في روسيا وأوروبا الشرقية", "perks": "معترف بها في قطر والسعودية ومنظمة الصحة العالمية بدون يوس", "badge": "الأولى طبياً في روسيا 🏆"}, {"id": "sechenov_dent", "name": "جامعة سيشينوف - طب أسنان", "country": "روسيا 🇷🇺", "countryKey": "russia", "city": "موسكو", "degree": "طب وجراحة الأسنان (5 سنوات)", "field": "طب وجراحة الفم والأسنان", "majorKey": "dentistry", "tuitionUsd": 7200, "paymentScheme": "قسط سنوي ($7,200/سنوياً)", "lang": "الإنجليزية", "scholarship": "دراسة طب الأسنان باللغة الإنجليزية في قلب موسكو", "perks": "تدريب سريري مكثف ومراكز جراحة فم وأسنان عالمية", "badge": "طب أسنان بالإنجليزية 🦷"}, {"id": "msu_lomonosov", "name": "جامعة لومونوسوف موسكو الحكومية", "country": "روسيا 🇷🇺", "countryKey": "russia", "city": "موسكو", "degree": "بكالوريوس وماجستير علوم الحاسب والذكاء الاصطناعي", "field": "علوم حاسوب، ذكاء اصطناعي، فيزياء تطبيقية", "majorKey": "engineering", "tuitionUsd": 4800, "paymentScheme": "قسط سنوي ($4,800/سنوياً)", "lang": "الإنجليزية / الروسية", "scholarship": "المصنفة رقم 1 في روسيا ومن أفضل 80 جامعة في العالم QS", "perks": "شهادة ذات وزن أكاديمي دولي استثنائي وأبحاث رائدة", "badge": "QS Top 100 العالمية 🏛️"}, {"id": "kazan_federal", "name": "جامعة قازان الفيدرالية", "country": "روسيا 🇷🇺", "countryKey": "russia", "city": "قازان", "degree": "الطب البشري وهندسة البترول", "field": "طب بشري، هندسة بترول وغاز", "majorKey": "medicine", "tuitionUsd": 3600, "paymentScheme": "قسط سنوي ($3,600/سنوياً)", "lang": "الإنجليزية / الروسية", "scholarship": "مدينة قازان العاصمة الإسلامية لروسيا وبيئة مثالية للطلاب العرب", "perks": "تكاليف معيشة وسكن منخفضة جداً ومستوى أكاديمي ممتاز", "badge": "الأكثر ملاءمة للطلاب العرب 🕌"}, {"id": "pavlov_med", "name": "جامعة بافلوف الطبية الأولى بسانت بطرسبرغ", "country": "روسيا 🇷🇺", "countryKey": "russia", "city": "سانت بطرسبرغ", "degree": "الطب البشري العام (MBBS - 6 سنوات)", "field": "الطب البشري والجراحة", "majorKey": "medicine", "tuitionUsd": 5800, "paymentScheme": "قسط سنوي ($5,800/سنوياً)", "lang": "الإنجليزية", "scholarship": "أعرق كليات الطب في العاصمة الثقافية سانت بطرسبرغ", "perks": "اعتماد أوروبي وأمريكي ومستشفيات تدريبية متخصصة", "badge": "عراقة سانت بطرسبرغ ❄️"}, {"id": "rudn_moscow", "name": "جامعة الصداقة بين الشعوب", "country": "روسيا 🇷🇺", "countryKey": "russia", "city": "موسكو", "degree": "بكالوريوس الهندسة وإدارة الأعمال والقانون", "field": "هندسة برمجيات، إدارة، علاقات دولية", "majorKey": "business", "tuitionUsd": 3900, "paymentScheme": "قسط سنوي ($3,900/سنوياً)", "lang": "الإنجليزية / الروسية", "scholarship": "الجامعة الأكثر تنوعاً دولياً وتضم طلاباً من 160 دولة", "perks": "حرم جامعي متكامل ومرافق رياضية وترفيهية عملاقة", "badge": "بيئة دولية متعددة الثقافات 🌍"}, {"id": "um_malaya", "name": "جامعة ملايا الحكومية", "country": "ماليزيا 🇲🇾", "countryKey": "malaysia", "city": "كوالالمبور", "degree": "بكالوريوس الهندسة وعلوم البيانات", "field": "هندسة حاسوب، ذكاء اصطناعي، بيانات ضخمة", "majorKey": "engineering", "tuitionUsd": 4200, "paymentScheme": "قسط سنوي ($4,200/سنوياً)", "lang": "الإنجليزية (100%)", "scholarship": "المرتبة 60 عالمياً في تصنيف QS World Rankings", "perks": "شهادة حكومية عليا معترف بها بالكامل في دول الخليج والعالم", "badge": "QS Rank #60 عالمياً 🌟"}, {"id": "taylors_uni", "name": "جامعة تايلورز الدولية", "country": "ماليزيا 🇲🇾", "countryKey": "malaysia", "city": "سوبانغ جايا (كوالالمبور)", "degree": "شهادة بريطانية مزدوجة (UK Dual Award)", "field": "حاسب آلي، إدارة أعمال، ذكاء اصطناعي", "majorKey": "business", "tuitionUsd": 6800, "paymentScheme": "قسط سنوي ($6,800/سنوياً)", "lang": "الإنجليزية (100%)", "scholarship": "الجامعة الخاصة رقم 1 في جنوب شرق آسيا", "perks": "تخرج بشهادتين: شهادة من تايلورز وشهادة من جامعة بريطانية شريكة", "badge": "شهادة بريطانية مزدوجة 🎓"}, {"id": "monash_malaysia", "name": "جامعة موناش الدولية", "country": "ماليزيا 🇲🇾", "countryKey": "malaysia", "city": "صنواي (سيلانجور)", "degree": "بكالوريوس أسترالي معتمد", "field": "هندسة، صيدلة، تكنولوجيا معلومات", "majorKey": "engineering", "tuitionUsd": 9800, "paymentScheme": "قسط سنوي ($9,800/سنوياً)", "lang": "الإنجليزية (100%)", "scholarship": "فرع رسمي لجامعة موناش الأسترالية (Group of Eight)", "perks": "نفس المنهج والشهادة الأسترالية بتكلفة ثلث الدراسة في أستراليا", "badge": "جامعة أسترالية مرموقة 🦘"}, {"id": "upm_putra", "name": "جامعة بوترا ماليزيا", "country": "ماليزيا 🇲🇾", "countryKey": "malaysia", "city": "سيردانغ", "degree": "بكالوريوس وماجستير التكنولوجيا الحيوية والزراعة", "field": "تكنولوجيا حيوية، ذكاء اصطناعي، إدارة", "majorKey": "engineering", "tuitionUsd": 3400, "paymentScheme": "قسط سنوي ($3,400/سنوياً)", "lang": "الإنجليزية (100%)", "scholarship": "ضمن أفضل 150 جامعة في تصنيف QS العالمي", "perks": "حرم جامعي خضري عملاق وبحوث تطبيقية متقدمة", "badge": "أفضل الجامعات الحكومية 🌴"}, {"id": "tsinghua_uni", "name": "جامعة تسينغهوا", "country": "الصين 🇨🇳", "countryKey": "china", "city": "بكين", "degree": "منحة الحكومة الصينية الكاملة (CSC)", "field": "علوم الحاسب، ذكاء اصطناعي، روبوتات", "majorKey": "engineering", "tuitionUsd": 0, "paymentScheme": "مجانية 100% (منحة كاملة + سكن وراتب)", "lang": "الإنجليزية", "scholarship": "إعفاء كامل من الرسوم مع راتب شهري وسكن جامعي مجاني", "perks": "رقم 1 في آسيا ورقم 14 عالمياً - هارفارد الشرق", "badge": "منحة CSC كاملة 100% 🇨🇳"}, {"id": "peking_uni", "name": "جامعة بكين", "country": "الصين 🇨🇳", "countryKey": "china", "city": "بكين", "degree": "منحة رئاسية صينية كاملة", "field": "علاقات دولية، اقتصاد، إدارة أعمال", "majorKey": "business", "tuitionUsd": 0, "paymentScheme": "مجانية 100% (دراسة + سكن + تأمين)", "lang": "الإنجليزية", "scholarship": "منحة رئاسية ممولة بالكامل تشمل السكن الجامعي والتأمين", "perks": "أعرق جامعة صينية وتصنيف عالمي متقدم بين أول 15 جامعة عالمياً", "badge": "منحة رئاسية ممولة 👑"}, {"id": "zhejiang_uni", "name": "جامعة تشجيانغ", "country": "الصين 🇨🇳", "countryKey": "china", "city": "هانغتشو", "degree": "منحة تفوق أكاديمي كاملة", "field": "هندسة روبوتات، برمجيات، تكنولوجيا", "majorKey": "engineering", "tuitionUsd": 0, "paymentScheme": "مجانية 100% (للطلاب المتميزين)", "lang": "الإنجليزية", "scholarship": "منحة متكاملة في عاصمة التكنولوجيا ومقر مجموعة علي بابا", "perks": "شراكات تدريب وتوظيف مع عمالقة التقنية الصينيين", "badge": "عاصمة التكنولوجيا والذكاء 🚀"}, {"id": "ciu_cyprus", "name": "جامعة قبرص الدولية", "country": "قبرص 🇨🇾", "countryKey": "cyprus", "city": "ليفكوشا", "degree": "الباقة الشاملة الكبرى (بكالوريوس كامل)", "field": "هندسة، صيدلة، إدارة، علاج طبيعي", "majorKey": "medicine", "tuitionUsd": 4200, "paymentScheme": "باقة شاملة ($4,200/سنوياً شامل السكن والوجبات)", "lang": "الإنجليزية (100%)", "scholarship": "الباقة الطلابية الأقوى: دراسة كاملة + سكن فندقي + 3 وجبات يومياً", "perks": "معتمدة من FEDEK وPearson واعتراف خليجي وعربي واسع", "badge": "شاملة السكن و3 وجبات 🍽️"}, {"id": "emu_cyprus", "name": "جامعة الشرق المتوسط", "country": "قبرص 🇨🇾", "countryKey": "cyprus", "city": "فاماجوستا", "degree": "بكالوريوس وماجستير معتمد من ABET", "field": "هندسة مدنية، كهرباء، عمارة، حاسوب", "majorKey": "engineering", "tuitionUsd": 3800, "paymentScheme": "قسط سنوي ميسر ($3,800/سنوياً)", "lang": "الإنجليزية (100%)", "scholarship": "الجامعة الحكومية رقم 1 في قبرص واعتماد ABET الأمريكي للهندسة", "perks": "تصنيف تايمز للتعليم العالي THE 500-600 ومعترف بها في كافة الدول", "badge": "اعتماد ABET الأمريكي 🎖️"}, {"id": "neu_cyprus", "name": "جامعة الشرق الأدنى", "country": "قبرص 🇨🇾", "countryKey": "cyprus", "city": "ليفكوشا", "degree": "الطب البشري وطب الأسنان", "field": "طب وجراحة، طب أسنان سريري", "majorKey": "medicine", "tuitionUsd": 7900, "paymentScheme": "قسط سنوي ($7,900/سنوياً)", "lang": "الإنجليزية (100%)", "scholarship": "أكبر مجمع مستشفيات جامعية في قبرص وبحوث طبية سريرية متقدمة", "perks": "مستشفى جامعي معتمد دولياً وسيارات تدريبية وسكن فاخر", "badge": "المستشفى الجامعي الأكبر 🏥"}];
+
+    // STATE
+    const RATES = { USD: 1, TRY: 38, RUB: 96 };
+    let currentCurrency = 'USD';
+    let currentCountryKey = 'turkey';
+    let currentSlideIndex = 0;
+    let activeMajorFilter = 'all';
+    let ambientActive = true;
+    let selectedUniForModal = null;
+
+    // INITIALIZATION ON DOM READY
+    document.addEventListener('DOMContentLoaded', () => {
+      renderSlide(0);
+      initAmbientCanvas();
+    });
+
+    // Sync hero search with universities search
+    function syncHeroSearch() {
+      const q = document.getElementById('heroQuickSearch')?.value || '';
+      const uniInput = document.getElementById('uniSearchInput');
+      if (uniInput) {
+        uniInput.value = q;
+        applyFilters();
+      }
+    }
+
+    // ================= SLIDE SWITCHING ENGINE =================
+    function setSlideIndex(index) {
+      currentSlideIndex = (index + COUNTRIES_DATA.length) % COUNTRIES_DATA.length;
+      renderSlide(currentSlideIndex);
+    }
+
+    function switchCountrySlide(countryKey) {
+      const idx = COUNTRIES_DATA.findIndex(c => c.key === countryKey);
+      if (idx > -1) {
+        setSlideIndex(idx);
+        const hero = document.getElementById('hero');
+        if (hero) hero.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function renderSlide(index) {
+      const c = COUNTRIES_DATA[index];
+      currentCountryKey = c.key;
+
+      // 1. Crossfade Hero Backgrounds
+      for (let i = 0; i < COUNTRIES_DATA.length; i++) {
+        const bg = document.getElementById(`heroBg${i}`);
+        if (bg) {
+          if (i === index) {
+            bg.classList.add('active');
+          } else {
+            bg.classList.remove('active');
+          }
+        }
+      }
+
+      // 2. Update Top Navbar Country Highlight
+      document.querySelectorAll('.nav-country-btn').forEach(btn => {
+        btn.className = 'nav-country-btn px-3.5 py-1.5 rounded-full transition-all text-[#4E5F5A] hover:text-[#15221F] hover:bg-[#F6F3EB]';
+      });
+      const activeNavBtn = document.getElementById(`navCountry_${c.key}`);
+      if (activeNavBtn) {
+        activeNavBtn.className = 'nav-country-btn px-3.5 py-1.5 rounded-full transition-all bg-[#26584D] text-white shadow-sm';
+      }
+
+      // 3. Update Slide Numbers Pagination
+      for (let i = 0; i < COUNTRIES_DATA.length; i++) {
+        const numBtn = document.getElementById(`slideNum${i}`);
+        if (numBtn) {
+          if (i === index) {
+            numBtn.className = 'slide-num-btn w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#26584D] text-white flex items-center justify-center text-xs shadow';
+          } else {
+            numBtn.className = 'slide-num-btn w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/40 hover:bg-white/20 text-white flex items-center justify-center text-xs';
+          }
+        }
+      }
+
+      // 4. Update Hero Content & Liquid Glass
+      const flag = document.getElementById('heroFlag');
+      const countryName = document.getElementById('heroCountryName');
+      const kicker = document.getElementById('heroKicker');
+      const headline = document.getElementById('heroHeadline');
+      const subtext = document.getElementById('heroSubtext');
+      const stat1 = document.getElementById('heroStat1');
+      const stat2 = document.getElementById('heroStat2');
+      const stat3 = document.getElementById('heroStat3');
+      const waDirect = document.getElementById('heroWhatsAppDirect');
+
+      if (flag) flag.textContent = c.flag;
+      if (countryName) {
+        if (c.key === 'china') {
+          countryName.innerHTML = `<span class="tracking-widest uppercase font-black text-amber-300 drop-shadow-[0_0_12px_rgba(251,191,36,0.8)]">CHINA</span> • ${c.name} • ${c.cities}`;
+        } else {
+          countryName.textContent = `${c.name} • ${c.cities}`;
+        }
+      }
+      if (kicker) kicker.textContent = c.kicker;
+      if (headline) headline.textContent = c.headline;
+      if (subtext) subtext.textContent = c.subtext;
+      if (stat1) stat1.textContent = c.stat1;
+      if (stat2) stat2.textContent = c.stat2;
+      if (stat3) stat3.textContent = c.stat3;
+
+      if (waDirect) {
+        const text = encodeURIComponent(`مرحباً أستاذ معاذ عناني (الوكيل الرسمي لشركة برايم في قطر)، أود الاستفسار عن فرص القبول والمنح في ${c.name} (${c.cities})`);
+        waDirect.href = `https://wa.me/905367857843?text=${text}`;
+      }
+
+      // 5. Render Section 2: 4 Landmarks for this country!
+      renderLandmarks(c);
+
+      // 6. Update Section 3 Universities title & list
+      const uniTitle = document.getElementById('uniSectionTitle');
+      if (uniTitle) uniTitle.textContent = `الجامعات والمنح المتاحة في ${c.name}`;
+      applyFilters();
+
+      // 7. Update Ambient Theme
+      currentAmbientTheme = c.key;
+    }
+
+    // ================= SECTION 2: 4 LANDMARKS RENDER =================
+    function renderLandmarks(c) {
+      const sectionTitle = document.getElementById('landmarksSectionTitle');
+      if (sectionTitle) sectionTitle.textContent = c.landmarksTitle;
+
+      const grid = document.getElementById('landmarksGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      c.landmarks.forEach(lm => {
+        const card = document.createElement('div');
+        card.className = 'landmark-card group relative rounded-2xl sm:rounded-3xl overflow-hidden aspect-[3/4] cursor-pointer border border-[#E3DED2] hover:border-[#26584D] shadow-lg';
+        card.onclick = () => {
+          const unisSec = document.getElementById('universities');
+          if (unisSec) unisSec.scrollIntoView({ behavior: 'smooth' });
+        };
+
+        card.innerHTML = `
+          <img src="${lm.image}" alt="${lm.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+          
+          <div class="absolute top-3.5 right-3.5 px-3 py-1 rounded-full bg-white/90 backdrop-blur border border-white/40 text-xs font-bold text-[#15221F] font-cairo shadow-sm">
+            ${c.name} ${c.flag}
+          </div>
+
+          <div class="absolute bottom-4 sm:bottom-5 inset-x-4 sm:inset-x-5 text-right text-white">
+            <span class="text-[10px] sm:text-[11px] font-bold tracking-wider text-emerald-300 uppercase font-cairo">${lm.tag}</span>
+            <h3 class="text-base sm:text-lg font-bold text-white font-cairo mt-0.5 sm:mt-1">${lm.title}</h3>
+            <p class="text-xs text-white/80 mt-1 line-clamp-2">${lm.desc}</p>
+            <div class="mt-2.5 sm:mt-3 flex items-center justify-between text-xs text-emerald-300 font-bold group-hover:translate-x-1 transition-transform font-cairo">
+              <span>تصفح جامعات ${c.name}</span>
+              <span>←</span>
+            </div>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    // ================= CURRENCY ENGINE =================
+    function setCurrency(curr) {
+      currentCurrency = curr;
+      ['USD', 'TRY', 'RUB'].forEach(c => {
+        const btn = document.getElementById(`curr${c}`);
+        if (btn) {
+          if (c === curr) {
+            btn.className = 'px-2 sm:px-3 py-1 rounded-full transition-all bg-[#26584D] text-white shadow-sm font-bold';
+          } else {
+            btn.className = 'px-2 sm:px-3 py-1 rounded-full transition-all text-[#4E5F5A] hover:text-[#15221F] font-bold';
+          }
+        }
+      });
+      applyFilters();
+      updateStaticPrices();
+    }
+
+    function formatMoney(amountUsd) {
+      if (amountUsd === 0) return 'منحة كاملة مجانية 100%';
+      const rate = RATES[currentCurrency] || 1;
+      const symbol = currentCurrency === 'USD' ? '$' : currentCurrency === 'TRY' ? '₺' : '₽';
+      const label = currentCurrency === 'USD' ? 'دولار' : currentCurrency === 'TRY' ? 'ليرة' : 'روبل';
+      const converted = Math.round(amountUsd * rate);
+      return `${symbol}${converted.toLocaleString('en-US')} ${label}`;
+    }
+
+    function updateStaticPrices() {
+      document.querySelectorAll('[data-tuition]').forEach(el => {
+        const usd = parseInt(el.getAttribute('data-tuition'), 10);
+        if (!isNaN(usd)) {
+          el.innerHTML = `${formatMoney(usd)} <span class="text-xs font-normal text-[#7E8D88]">مرة واحدة فقط</span>`;
+        }
+      });
+    }
+
+    // ================= UNIVERSITIES FILTER & RENDER =================
+    function setMajorFilter(majorKey) {
+      activeMajorFilter = majorKey;
+      document.querySelectorAll('.major-pill').forEach(btn => {
+        btn.className = 'major-pill px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[#E3DED2] bg-white text-[#4E5F5A] hover:text-[#15221F] shadow-sm text-xs font-bold';
+      });
+      event.currentTarget.className = 'major-pill px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[#26584D] bg-[#26584D] text-white shadow-sm text-xs font-bold';
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const search = (document.getElementById('uniSearchInput')?.value || '').toLowerCase().trim();
+      const grid = document.getElementById('unisGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      const filtered = UNIS_DATABASE.filter(u => {
+        const matchCountry = (u.countryKey === currentCountryKey);
+        const matchMajor = (activeMajorFilter === 'all' || u.majorKey === activeMajorFilter);
+        const matchSearch = !search || 
+          u.name.toLowerCase().includes(search) || 
+          u.field.toLowerCase().includes(search) || 
+          u.city.toLowerCase().includes(search) ||
+          u.degree.toLowerCase().includes(search);
+        return matchCountry && matchMajor && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center bg-white rounded-2xl sm:rounded-3xl border border-[#E3DED2] p-6 sm:p-8 shadow-sm">
+            <span class="text-3xl">🔍</span>
+            <p class="text-sm text-[#15221F] font-bold mt-2 font-cairo">لم يتم العثور على تخصصات مطابقة للبحث في هذه الدولة.</p>
+            <button onclick="setMajorFilter('all')" class="mt-3 px-5 py-2 rounded-full bg-[#26584D] text-white text-xs font-bold">عرض جميع التخصصات</button>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(u => {
+        const card = document.createElement('div');
+        card.className = 'theme-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group';
+        const formattedPrice = formatMoney(u.tuitionUsd);
+
+        card.innerHTML = `
+          <div>
+            <div class="p-5 sm:p-6">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <span class="px-2.5 py-0.5 rounded-full bg-[#EBF2F0] text-[#26584D] font-bold font-cairo">${u.badge}</span>
+                <span class="text-[#7E8D88] text-[11px] sm:text-xs">${u.city}</span>
+              </div>
+
+              <h3 class="text-base font-bold text-[#15221F] font-cairo leading-snug group-hover:text-[#26584D] transition-colors">${u.name}</h3>
+              <p class="text-xs text-[#4E5F5A] mt-1 font-semibold">${u.degree}</p>
+              
+              <div class="mt-3.5 sm:mt-4 flex flex-col gap-2 text-xs">
+                <div class="flex items-center justify-between text-[#7E8D88] border-b border-[#E3DED2]/60 pb-1.5">
+                  <span>لغة التدريس:</span>
+                  <span class="text-[#15221F] font-medium">${u.lang}</span>
+                </div>
+                <div class="flex items-center justify-between text-[#7E8D88] border-b border-[#E3DED2]/60 pb-1.5">
+                  <span>نظام الدفع:</span>
+                  <span class="text-[#26584D] font-bold">${u.paymentScheme}</span>
+                </div>
+              </div>
+
+              <div class="mt-3 p-3 rounded-2xl bg-[#F6F3EB] border border-[#E3DED2] text-[11px] text-[#4E5F5A]">
+                ✨ ${u.scholarship}
+              </div>
+            </div>
+          </div>
+
+          <div class="p-5 sm:p-6 pt-0">
+            <div class="flex items-baseline justify-between pt-3 border-t border-[#E3DED2] mb-3.5 sm:mb-4">
+              <span class="text-xs text-[#7E8D88]">الرسوم المستحقة:</span>
+              <span class="text-lg sm:text-xl font-black text-[#26584D]">${formattedPrice}</span>
+            </div>
+
+            <button onclick="openSelectMajorModal('${u.id}')" class="w-full py-2.5 sm:py-3 rounded-full bg-[#26584D] hover:bg-[#1C443C] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md shadow-[#26584D]/20 active:scale-95 transition-all">
+              <span>اختيار التخصص ومقارنته ⚖️</span>
+            </button>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    // ================= SPECIALIZATION COMPARISON & WHATSAPP REDIRECT ENGINE =================
+    function openSelectMajorModal(uniId) {
+      const u = UNIS_DATABASE.find(x => x.id === uniId);
+      if (!u) return;
+      selectedUniForModal = u;
+
+      // 1. Render Summary of Selected Choice
+      const summaryCard = document.getElementById('modalSelectedUniCard');
+      if (summaryCard) {
+        summaryCard.innerHTML = `
+          <div>
+            <div class="flex items-center gap-2 text-xs mb-1">
+              <span class="font-bold text-[#26584D]">${u.country} • ${u.city}</span>
+              <span class="px-2 py-0.5 rounded-full bg-white text-[#15221F] border border-[#E3DED2] text-[10px] sm:text-xs">${u.badge}</span>
+            </div>
+            <h4 class="text-base sm:text-lg font-bold text-[#15221F] font-cairo">${u.name}</h4>
+            <p class="text-xs text-[#4E5F5A] mt-0.5 font-semibold">${u.degree}</p>
+            <p class="text-[11px] sm:text-xs text-[#7E8D88] mt-1">لغة التدريس: ${u.lang} | نظام الرسوم: ${u.paymentScheme}</p>
+          </div>
+          <div class="text-right shrink-0">
+            <div class="text-[11px] sm:text-xs text-[#7E8D88]">الرسوم المقررة:</div>
+            <div class="text-xl sm:text-2xl font-black text-[#26584D] mt-0.5">${formatMoney(u.tuitionUsd)}</div>
+          </div>
+        `;
+      }
+
+      // 2. Render Comparison Table with same major
+      const compContainer = document.getElementById('modalComparisonTable');
+      if (compContainer) {
+        const peers = UNIS_DATABASE.filter(x => x.majorKey === u.majorKey && x.id !== u.id).slice(0, 3);
+        const allComp = [u, ...peers];
+
+        compContainer.innerHTML = `
+          <table class="w-full text-right text-xs">
+            <thead>
+              <tr class="bg-[#F6F3EB] border-b border-[#E3DED2] text-[#15221F]">
+                <th class="py-2.5 sm:py-3 px-3 sm:px-4 font-bold">الجامعة والدولة</th>
+                <th class="py-2.5 sm:py-3 px-3 sm:px-4 font-bold">الرسوم ونظام الدفع</th>
+                <th class="py-2.5 sm:py-3 px-3 sm:px-4 font-bold hidden sm:table-cell">لغة التدريس</th>
+                <th class="py-2.5 sm:py-3 px-3 sm:px-4 font-bold">الميزة الرئيسية</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#E3DED2]">
+              ${allComp.map((item, idx) => `
+                <tr class="${idx === 0 ? 'bg-[#EBF2F0] font-bold' : 'hover:bg-slate-50'}">
+                  <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-[#15221F]">
+                    ${idx === 0 ? '<span class="text-[#26584D] ml-1">★ خيارك:</span>' : ''}
+                    ${item.name} (${item.country})
+                  </td>
+                  <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-[#26584D] font-bold">${formatMoney(item.tuitionUsd)}</td>
+                  <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-[#4E5F5A] hidden sm:table-cell">${item.lang}</td>
+                  <td class="py-2.5 sm:py-3 px-3 sm:px-4 text-[#4E5F5A] text-[11px] sm:text-xs">${item.perks}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        `;
+      }
+
+      document.getElementById('selectMajorModal')?.classList.remove('hidden');
+    }
+
+    function closeSelectMajorModal() {
+      document.getElementById('selectMajorModal')?.classList.add('hidden');
+    }
+
+    function confirmAndSendWhatsApp() {
+      if (!selectedUniForModal) return;
+      const u = selectedUniForModal;
+
+      const studentName = (document.getElementById('studentNameInput')?.value || '').trim() || 'طالب كريم';
+      const studentPhone = (document.getElementById('studentPhoneInput')?.value || '').trim() || 'سيتم التواصل عبر هذا الرقم';
+      const formattedPrice = formatMoney(u.tuitionUsd);
+
+      // Formatted WhatsApp Message
+      const waMessage = 
+`🌟 *طلب تسجيل واستشارة أكاديمية - الوكيل الرسمي بقطر* 🌟
+━━━━━━━━━━━━━━━━━━━━
+👤 *اسم الطالب:* ${studentName}
+📱 *رقم التواصل:* ${studentPhone}
+🌍 *الوجهة الدراسية:* ${u.country}
+🏛️ *الجامعة المختارة:* ${u.name}
+🎓 *التخصص والدرجة:* ${u.degree}
+🗣️ *لغة التدريس:* ${u.lang}
+💰 *الرسوم ونظام السداد:* ${formattedPrice} (${u.paymentScheme})
+📍 *المدينة:* ${u.city}
+✨ *المنحة:* ${u.scholarship}
+━━━━━━━━━━━━━━━━━━━━
+مرحباً أستاذ معاذ عناني (الوكيل الرسمي لشركة برايم في دولة قطر 🇶🇦)، قمت باختيار هذه الجامعة والتخصص عبر موقع PRIME بعد مراجعة المقارنة، وأرغب في تأكيد المقعد والحصول على القبول الأكاديمي المجاني.`;
+
+      const waUrl = `https://wa.me/905367857843?text=${encodeURIComponent(waMessage)}`;
+      window.open(waUrl, '_blank');
+      closeSelectMajorModal();
+    }
+
+    // ================= MODAL: INITIAL WELCOME =================
+    function chooseDestinationModal(countryKey) {
+      closeWelcomeModal();
+      switchCountrySlide(countryKey);
+    }
+
+    function closeWelcomeModal() {
+      const modal = document.getElementById('welcomeModal');
+      if (modal) {
+        modal.style.opacity = '0';
+        setTimeout(() => modal.classList.add('hidden'), 300);
+      }
+    }
+
+    // ================= AMBIENT PARTICLES ENGINE =================
+    let currentAmbientTheme = 'turkey';
+
+    function toggleAmbient() {
+      ambientActive = !ambientActive;
+      const status = document.getElementById('ambientStatus');
+      if (status) status.textContent = ambientActive ? 'تأثيرات: تعمل' : 'تأثيرات: متوقفة';
+    }
+
+    function initAmbientCanvas() {
+      const canvas = document.getElementById('ambientCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      });
+
+      const particles = [];
+      const count = window.innerWidth < 640 ? 25 : 40;
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          size: Math.random() * 2.5 + 1,
+          speedY: Math.random() * 1.2 + 0.4,
+          speedX: Math.random() * 1 - 0.5,
+          opacity: Math.random() * 0.7 + 0.3
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+
+        if (ambientActive) {
+          particles.forEach(p => {
+            if (currentAmbientTheme === 'russia') {
+              // Snowfall
+              p.y += p.speedY * 1.2;
+              p.x += Math.sin(p.y * 0.01) * 0.5;
+              ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity * 0.8})`;
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+              ctx.fill();
+
+            } else if (currentAmbientTheme === 'turkey') {
+              // Floating Lanterns
+              p.y -= p.speedY * 0.6;
+              p.x += Math.sin(p.y * 0.02) * 0.8;
+              ctx.fillStyle = `rgba(245, 158, 11, ${p.opacity * 0.6})`;
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.size * 1.5, 0, Math.PI * 2);
+              ctx.fill();
+
+            } else if (currentAmbientTheme === 'china') {
+              // Festive Confetti
+              p.y += p.speedY * 1.4;
+              p.x += Math.sin(p.y * 0.03) * 1.2;
+              ctx.fillStyle = `rgba(225, 29, 72, ${p.opacity * 0.75})`;
+              ctx.fillRect(p.x, p.y, p.size * 2, p.size * 3);
+
+            } else {
+              // Malaysia & Cyprus: Warm Stardust
+              p.y += Math.sin(p.x * 0.01) * 0.4;
+              p.x += Math.cos(p.y * 0.01) * 0.4;
+              ctx.fillStyle = `rgba(38, 88, 77, ${p.opacity * 0.4})`;
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+              ctx.fill();
+            }
+
+            if (p.y > h) { p.y = -10; p.x = Math.random() * w; }
+            if (p.y < -10) { p.y = h; p.x = Math.random() * w; }
+            if (p.x > w) p.x = 0;
+            if (p.x < 0) p.x = w;
+          });
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      draw();
+    }
+  </script>
+</body>
+</html>
