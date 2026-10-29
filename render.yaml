@@ -1,7 +1,8 @@
 services:
   - type: web
-    name: prime-study-portal
+    name: prime-qatar-portal
     env: python
+    plan: free
+    region: frankfurt
     buildCommand: ""
     startCommand: "python server.py"
-    plan: free

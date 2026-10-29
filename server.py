@@ -18,10 +18,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.send_header('Access-Control-Allow-Origin', '*')
         super().end_headers()
 
-socketserver.TCPServer.allow_reuse_address = True
+socketserver.ThreadingTCPServer.allow_reuse_address = True
 
 if __name__ == '__main__':
-    with socketserver.TCPServer(("", PORT), Handler) as httpd:
+    with socketserver.ThreadingTCPServer(("0.0.0.0", PORT), Handler) as httpd:
         print("==================================================")
         print("PRIME STUDY ABROAD PORTAL - WEB SERVER")
         print("Official Agent: Moaaz Enany (Founder & Product Director)")
